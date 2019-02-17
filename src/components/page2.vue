@@ -1,0 +1,121 @@
+<template>
+  <div>
+    <x-header title="通证助手" :left-options="{showBack: false}"></x-header>
+    <div class="container-fluid" style="background:white;">
+      <div class="row" style="padding: 5px 5px 0px 5px;">
+       <tool-item v-for="(item,index) in p_List" 
+       :key="index"
+       :is-disabled="item.IsDisabled"
+       :icon="item.Icon"
+       :icon-name="item.IconName"
+       :icon-trigger="item.IconTrigger"
+       @TriggerParent="TriggerParent"
+       ></tool-item>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { XHeader, AlertModule } from "vux";
+export default {
+  components: {
+    AlertModule,
+    XHeader,
+    "tool-item": {
+      props: ["IsDisabled", "Icon", "IconName", "IconTrigger"],
+      template: `
+      <button class="col-xs-3 btn btn-default" type="button" :disabled="IsDisabled" @click="TriggerClick" style="margin:0px 10px 10px 15px;">
+          <div style="width:100%;text-align:center;"><i class="iconfont" :class="reversedIcon" style="font-size:36px;"></i></div>
+          <div style="width:100%;text-align:center;margin-top: -6px;">{{IconName}}</div>
+      </button> 
+      `,
+      methods: {
+        TriggerClick: function() {
+          this.$emit("TriggerParent", this.IconTrigger, this.IsDisabled);
+        }
+      },
+      computed: {
+        reversedIcon: function() {
+          return this.Icon;
+        }
+      }
+    }
+  },
+  data() {
+    return {
+      message: "hello UNK",
+      p_List: [
+        {
+          Icon: "icon-qiandao",
+          IconName: "签到",
+          IconTrigger: "TriggerSignIn",
+          IsDisabled: false
+        },
+        {
+          Icon: "icon-saoyisao",
+          IconName: "扫一扫",
+          IconTrigger: "TriggerScan",
+          IsDisabled: false
+        },
+        {
+          Icon: "icon-cunkuan",
+          IconName: "转账",
+          IconTrigger: "TriggerTransfer",
+          IsDisabled: false
+        },
+        {
+          Icon: "icon-fenxiang",
+          IconName: "推广会员",
+          IconTrigger: "TriggerPopularize",
+          IsDisabled: false
+        },
+        {
+          Icon: "icon-tianjiahaoyou",
+          IconName: "我的会员",
+          IconTrigger: "TriggerMyUserList",
+          IsDisabled: false
+        },
+        {
+          Icon: "icon-zhangdan",
+          IconName: "交易明细",
+          IconTrigger: "TriggerBillList",
+          IsDisabled: false
+        }
+      ]
+    };
+  },
+  methods: {
+    TriggerParent: function(func, status) {
+      var that = this;
+      switch (func) {
+        case "TriggerSignIn":
+          that.$router.push({
+            path: "/SignInDesk"
+          });
+          break;
+        case "TriggerBillList":
+        case "TriggerTransfer":
+        case "TriggerScan":
+          AlertModule.show({
+            title: "暂未开放,敬请期待"
+          });
+          break;
+        case "TriggerPopularize":
+          that.$router.push({
+            path: "/PromotionActivity"
+          });
+          break;
+        case "TriggerMyUserList":
+          that.$router.push({
+            path: "/MyTeam"
+          });
+          break;
+      }
+    }
+  }
+};
+</script>
+
+<style>
+</style>
