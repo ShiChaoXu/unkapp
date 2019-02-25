@@ -1,14 +1,26 @@
 <script>
-const webApi = "http://unk-token.com:8091/api/";
-const Webwww = "http://unk-token.com/"
+const ISPROD = false;
+const webApi = ISPROD
+  ? "http://unk-token.com:8091/api/"
+  : "http://192.168.1.10:8091/api/";
+const Webwww = ISPROD ? "http://unk-token.com/" : "http://192.168.1.10:8090/";
 const CurrentUser = null;
 const CurrentTokenList = [];
 function AjaxGet(url, callback, isAsync = true) {
+  if (url.indexOf("?") == -1) {
+    url += `?t=${new Date().getTime()}`;
+  } else {
+    url += `&t=${new Date().getTime()}`;
+  }
   $.ajax({
     url: webApi + url,
     type: "GET",
     async: isAsync,
+    beforeSend: function() {
+      MVue.$vux.loading.show({text:'Loading'})
+    },
     success: function(data) {
+      MVue.$vux.loading.hide();
       callback(data);
     }
   });
@@ -20,14 +32,18 @@ function AjaxPost(url, postData, callback, isAsync = true) {
     type: "Post",
     async: isAsync,
     data: postData,
+    beforeSend: function() {
+     MVue.$vux.loading.show({text:'Loading'})
+    },
     success: function(data) {
+     MVue.$vux.loading.hide();
       callback(data);
     }
   });
 }
 
 function thousandBitSeparator(num) {
-  num = num.toString(); 
+  num = num.toString();
   if (/^-?\d+\.?\d+$/.test(num)) {
     if (/^-?\d+$/.test(num)) {
       num = num + ",00";
@@ -48,6 +64,7 @@ export default {
   CurrentUser,
   CurrentTokenList,
   thousandBitSeparator,
-  Webwww
+  Webwww,
+  ISPROD
 };
 </script>

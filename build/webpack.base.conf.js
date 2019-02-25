@@ -72,7 +72,10 @@ let webpackConfig = {
       $: "jquery",
       jQuery: "jquery"
     })
-  ]
+  ],
+  externals:{
+    
+  }
 }
 
 

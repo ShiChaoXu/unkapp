@@ -45,7 +45,6 @@ export default {
     that.Global.AjaxGet(
       `user/GetGainsInHisotry?p_type=${that.dataType}`,
       function(data) {
-        console.log(data);
         that.rList = data.Data;
       }
     );

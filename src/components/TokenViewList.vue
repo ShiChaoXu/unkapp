@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     GetCurrentTokenCount: function(p_type) {
-      debugger;
       var items = this.Global.CurrentTokenList.filter(x => x.TokenType == p_type);
       return items.length > 0 ? items[0].CurrentIcon : 0;
     }

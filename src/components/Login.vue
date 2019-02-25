@@ -4,27 +4,26 @@
       <H2 style="font-weight:bolder;">OBOROTC</H2>
       <h4>UNK—TOKEN</h4>
     </div>
-    <group title=""> 
+    <group title>
       <x-input title="手机号" v-model="UserName" :max="11" is-type="china-mobile" required></x-input>
     </group>
-    <group title="">
+    <group title>
       <x-input title="密码" v-model="UserPwd" :min="6" :max="13" required type="password"></x-input>
     </group>
     <group>
-        <x-button action-type="button" plain type="primary" @click.native="UserLogin" :show-loading="showLoading">登 录</x-button>
+      <x-button
+        action-type="button"
+        plain
+        type="primary"
+        @click.native="UserLogin"
+        :show-loading="showLoading"
+      >登 录</x-button>
     </group>
   </div>
 </template>
 
 <script>
-import {
-  Group,
-  Cell,
-  base64,
-  XInput,
-  XButton,
-  AlertModule
-} from "vux";
+import { Group, Cell, base64, XInput, XButton, AlertModule } from "vux";
 
 export default {
   components: {
@@ -35,10 +34,11 @@ export default {
     AlertModule
   },
   data() {
+    var that = this;
     return {
       msg: "Hello World!",
-      UserName: "",
-      UserPwd: "",
+      UserName: that.Global.ISPROD ? "" : "17710328707",
+      UserPwd: that.Global.ISPROD ? "" : "123456",
       showLoading: false
     };
   },

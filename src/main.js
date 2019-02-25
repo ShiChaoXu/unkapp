@@ -4,24 +4,36 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
-import p1 from './components/page1'
-import p2 from './components/page2'
-import p3 from './components/page3'
-import p4 from './components/page4'
-import Login from './components/Login'
-import Details from './components/TokenViewItemDetails'
-import SignInDesk from './components/SignInDesk'
-import PromotionActivity from './components/PromotionActivity'
-import RegAccout from './components/RegAccout'
-import MyTeam from './components/MyTeam'
-import './iconfont/iconfont.css'
-import $ from 'jquery'
-import jQuery from 'jquery'
+import  { LoadingPlugin } from 'vux'
+
+import '@/iconfont/iconfont.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import _Global from '@/components/global'
 
-import _Global from './components/global'
+//Router Init
 
+const p1 = () => import('@/components/page1');
+const p2 = () => import('@/components/page2');
+const p3 = () => import('@/components/page3');
+const p4 = () => import('@/components/page4');
+const Login = () => import('@/components/Login');
+const Details = () => import('@/components/TokenViewItemDetails');
+const SignInDesk = () => import('@/components/SignInDesk');
+const RegAccout = () => import('@/components/RegAccout');
+const MyTeam = () => import('@/components/MyTeam');
+const PromotionActivity = () => import('@/components/PromotionActivity');
+const SystemSetting = () => import('@/components/page4Setting');
+const Certification = () => import('@/components/Certification');
+const WordBook = () => import('@/components/WordBook');
+const EditLoginPwd = () => import('@/components/EditLoginPwd');
+const EditPayPwd = () => import('@/components/EditPayPwd');
+
+//End Router
+
+
+Vue.use(LoadingPlugin);
+window.MVue = Vue;
 Vue.config.devtools = true;
 Vue.use(VueRouter)
 Vue.prototype.Global = _Global;
@@ -71,6 +83,26 @@ const routes = [
   {
     path: '/MyTeam',
     component: MyTeam
+  },
+  {
+    path: '/SystemSetting',
+    component: SystemSetting
+  },
+  {
+    path: '/Certification',
+    component: Certification
+  },
+  {
+    path: '/WordBook',
+    component: WordBook
+  },
+  {
+    path: '/EditLoginPwd',
+    component: EditLoginPwd
+  },
+  {
+    path: '/EditPayPwd',
+    component: EditPayPwd
   }
 ]
 

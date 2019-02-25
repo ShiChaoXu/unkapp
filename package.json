@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bip39": "^2.5.0",
     "bootstrap": "^3.4.0",
     "fastclick": "^1.0.6",
     "jquery": "^3.3.1",

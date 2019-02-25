@@ -20,8 +20,8 @@
         </table>
         <div class="container" style="border-top:1px solid #eeeeee;">
             <div class="row" style="border-bottom:1px solid #eeeeee; height:50px; line-height:50px">
-                <div class="col-xs-9" style="font-weight:bolder;">资产合计:</div>
-                <div class="col-xs-3" ><span  style="font-weight:bolder;color:green;">{{TotalCount.toFixed(2)}}</span> 元</div>
+                <div class="col-xs-4" style="font-weight:bolder;">资产合计:</div>
+                <div class="col-xs-8" style="text-align:right;"><span  style="font-weight:bolder;color:green;">{{TotalCount.toFixed(2)}}</span> 元</div>
             </div>
             <div class="row" style="border-bottom:1px solid #eeeeee; height:50px; line-height:50px">
                 <div class="col-xs-8" style="font-weight:bolder;">显示货币 CNY</div>

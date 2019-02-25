@@ -16,7 +16,7 @@
     </group>
 
     <group>
-        <x-button action-type="button" plain type="primary" @click.native="UserReg" :show-loading="showLoading" :disabled="disabled">注 册</x-button>
+        <x-button action-type="button"  type="primary" @click.native="UserReg" :show-loading="showLoading" :disabled="disabled">注 册</x-button>
     </group>
   </div>
 </template>

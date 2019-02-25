@@ -2,7 +2,7 @@
   <div>
     <x-header title="通证助手" :left-options="{showBack: false}"></x-header>
     <div class="container-fluid" style="background:white;">
-      <div class="row" style="padding: 5px 5px 0px 5px;">
+      <div class="row" style="padding: 20px;">
        <tool-item v-for="(item,index) in p_List" 
        :key="index"
        :is-disabled="item.IsDisabled"

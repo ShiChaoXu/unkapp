@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <below-menu :isShow="isShow"></below-menu>  
+    <transition name="fade" mode="out-in">
+      <router-view class="view"></router-view>
+    </transition>
+    <below-menu :isShow="isShow"></below-menu>
   </div>
 </template>
 
