@@ -51,4 +51,5 @@ body {
   background-color: #fbf9fe;
   font-size: 18px !important;
 }
+ * { touch-action: pan-y; } 
 </style>

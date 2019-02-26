@@ -6,6 +6,7 @@ const webApi = ISPROD
 const Webwww = ISPROD ? "http://unk-token.com/" : "http://192.168.1.10:8090/";
 const CurrentUser = null;
 const CurrentTokenList = [];
+
 function AjaxGet(url, callback, isAsync = true) {
   if (url.indexOf("?") == -1) {
     url += `?t=${new Date().getTime()}`;

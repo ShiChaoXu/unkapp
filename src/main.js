@@ -3,16 +3,14 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
-import App from './App'
-import  { LoadingPlugin } from 'vux'
-
+import { LoadingPlugin, AlertPlugin, ConfirmPlugin } from 'vux'
 import '@/iconfont/iconfont.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+
+import App from './App'
 import _Global from '@/components/global'
-
 //Router Init
-
 const p1 = () => import('@/components/page1');
 const p2 = () => import('@/components/page2');
 const p3 = () => import('@/components/page3');
@@ -33,7 +31,10 @@ const EditPayPwd = () => import('@/components/EditPayPwd');
 
 
 Vue.use(LoadingPlugin);
+Vue.use(AlertPlugin);
+Vue.use(ConfirmPlugin);
 window.MVue = Vue;
+
 Vue.config.devtools = true;
 Vue.use(VueRouter)
 Vue.prototype.Global = _Global;

@@ -2,9 +2,7 @@
   <div class="container-fluid" style="background:white;">
     <div class="row MyRowStyle">
       <div class="col-xs-12" style="height:60px;font-weight:bolder;">总资产</div>
-      <div class="col-xs-12" style="text-align:right;">
-        ≈￥{{reversedTotalPrice}}
-      </div>
+      <div class="col-xs-12" style="text-align:right;">≈￥{{reversedTotalPrice}}</div>
     </div>
     <div class="clearfix"></div>
     <div class="row MyRowStyle">
@@ -13,24 +11,36 @@
       <div class="col-xs-3 pull-right">今日涨幅</div>
     </div>
     <div>
-    <token-item v-for="(item,index) in g_List" :key="index"
-    :icon="item.icon"
-    :icon-name="item.name"
-    :iconPrice="item.price"
-    :iconComing="item.coming"
-    :iconIsUp="item.isup"
-    :iconIndex="index||0"
-    :CurrentHave="GetCurrentTokenCount(item.name)"
-    ></token-item>
+      <token-item
+        v-for="(item,index) in g_List"
+        :key="index"
+        :icon="item.icon"
+        :icon-name="item.name"
+        :iconPrice="item.price"
+        :iconComing="item.coming"
+        :iconIsUp="item.isup"
+        :iconIndex="index||0"
+        :CurrentHave="GetCurrentTokenCount(item.name)"
+      ></token-item>
+
+      <div class="clearfix"></div>
+      <div class="row MyRowStyle">
+        <div class="col-xs-12" style="height:60px;font-weight:bolder;">钱包地址</div>
+        <div class="col-xs-12" style="text-align:right;">
+          <x-button action-type="button" plain type="primary" @click.native="ClickWallet">请完成实名认证</x-button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import TokenItem from "@/components/TokenViewItem";
+import { XButton } from "vux";
 export default {
   components: {
-    TokenItem
+    TokenItem,
+    XButton
   },
   computed: {
     reversedTotalPrice: function() {
@@ -41,7 +51,7 @@ export default {
           x => x.TokenType == element.name
         );
         if (t_item.length > 0) {
-          totalPrice += (t_item[0].CurrentIcon * element.price);
+          totalPrice += t_item[0].CurrentIcon * element.price;
         }
       });
       return totalPrice.toFixed(4);
@@ -55,8 +65,13 @@ export default {
   },
   methods: {
     GetCurrentTokenCount: function(p_type) {
-      var items = this.Global.CurrentTokenList.filter(x => x.TokenType == p_type);
+      var items = this.Global.CurrentTokenList.filter(
+        x => x.TokenType == p_type
+      );
       return items.length > 0 ? items[0].CurrentIcon : 0;
+    },
+    ClickWallet: function() {
+      console.log("Run this");
     }
   },
   created: function() {

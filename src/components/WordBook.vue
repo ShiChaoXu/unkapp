@@ -44,7 +44,11 @@ export default {
   },
   methods: {
     BuildWord: function() {
+      //生成助记词
       let ts = bip39.generateMnemonic(256);
+      //编译为钱包地址
+      var seedHex = bip39.mnemonicToSeedHex(ts);
+      console.log(seedHex);
       this.wordBook = ts;
       this.disabled = true;
     }
