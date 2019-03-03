@@ -24,23 +24,16 @@
       ></token-item>
 
       <div class="clearfix"></div>
-      <div class="row MyRowStyle">
-        <div class="col-xs-12" style="height:60px;font-weight:bolder;">钱包地址</div>
-        <div class="col-xs-12" style="text-align:right;">
-          <x-button action-type="button" plain type="primary" @click.native="ClickWallet">请完成实名认证</x-button>
-        </div>
-      </div>
+      
     </div>
   </div>
 </template>
 
 <script>
 import TokenItem from "@/components/TokenViewItem";
-import { XButton } from "vux";
 export default {
   components: {
     TokenItem,
-    XButton
   },
   computed: {
     reversedTotalPrice: function() {
@@ -69,9 +62,6 @@ export default {
         x => x.TokenType == p_type
       );
       return items.length > 0 ? items[0].CurrentIcon : 0;
-    },
-    ClickWallet: function() {
-      console.log("Run this");
     }
   },
   created: function() {
