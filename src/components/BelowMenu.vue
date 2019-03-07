@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isShow" style="">
+    <div v-if="isShow" style="" class="navbar navbar-default navbar-fixed-bottom">
     <tabbar>
       <tabbar-item icon-class="iconfont icon-zuanshi_o" link="/P1" selected>
         <i slot="icon"/>

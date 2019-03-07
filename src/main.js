@@ -26,6 +26,7 @@ const Certification = () => import('@/components/Certification');
 const WordBook = () => import('@/components/WordBook');
 const EditLoginPwd = () => import('@/components/EditLoginPwd');
 const EditPayPwd = () => import('@/components/EditPayPwd');
+const NewsDetails = () => import('@/components/NewsDetails');
 
 //End Router
 
@@ -104,6 +105,10 @@ const routes = [
   {
     path: '/EditPayPwd',
     component: EditPayPwd
+  },
+  {
+    path: '/NewsDetails',
+    component: NewsDetails
   }
 ]
 
