@@ -1,28 +1,27 @@
 <template>
-    <div v-if="isShow" style="" class="navbar navbar-default navbar-fixed-bottom">
+  <div v-if="isShow" style class="navbar navbar-default navbar-fixed-bottom">
     <tabbar>
       <tabbar-item icon-class="iconfont icon-zuanshi_o" link="/P1" selected>
         <i slot="icon"/>
         <span slot="label" class="belowLabel">通证行情</span>
       </tabbar-item>
-      
+
       <tabbar-item icon-class="iconfont icon-jiqiren_o" link="/P2">
         <i slot="icon"/>
         <span slot="label" class="belowLabel">通证助手</span>
       </tabbar-item>
-      
+
       <tabbar-item icon-class="iconfont icon-xinwen" link="/P3">
         <i slot="icon"/>
         <span slot="label" class="belowLabel">资讯</span>
       </tabbar-item>
 
-      
       <tabbar-item icon-class="iconfont icon-gerentouxiang" link="/P4">
         <i slot="icon"/>
         <span slot="label" class="belowLabel">我的</span>
       </tabbar-item>
     </tabbar>
-    </div>
+  </div>
 </template>
 <script>
 import { Tabbar, TabbarItem } from "vux";
@@ -40,7 +39,8 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.path == "/RegAccout") {
+      var hideList = ["/RegAccout","/TransferList","/MyTeam"];
+      if (hideList.indexOf(to.path) != -1) {
         this.isShow = false;
       } else {
         this.isShow = this.Global.CurrentUser != null;

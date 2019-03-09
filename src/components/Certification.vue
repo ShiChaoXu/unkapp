@@ -51,9 +51,10 @@ export default {
         });
         return false;
       }
-      if (this.IDCard.length < 15) {
+      var IdCardLength = [15, 18];
+      if (IdCardLength.indexOf(this.IDCard.length) == -1) {
         this.$vux.alert.show({
-          content: `身份证的长度为15字符以上`
+          content: `身份证号只支持15为或18位`
         });
         return false;
       }
@@ -76,12 +77,18 @@ export default {
           _this.Global.AjaxPost("User/UpdateUserIDInfo", postArray, function(
             data
           ) {
-            _this.$vux.alert.show({
-              content: `信息提交成功！重新登陆后即生效`,
-              onHide() {
-                window.location.reload();
-              }
-            });
+            if (data.Data == false) {
+              _this.$vux.alert.show({
+                content: `提交失败! 当前[ 姓名 ]与[ 身份证号 ]已被认证.`
+              });
+            } else {
+              _this.$vux.alert.show({
+                content: `信息提交成功！重新登陆后即生效`,
+                onHide() {
+                  window.location.reload();
+                }
+              });
+            }
           });
         }
       });

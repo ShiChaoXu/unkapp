@@ -3,14 +3,15 @@
     <x-header title="通证助手" :left-options="{showBack: false}"></x-header>
     <div class="container-fluid" style="background:white;">
       <div class="row" style="padding: 20px;">
-       <tool-item v-for="(item,index) in p_List" 
-       :key="index"
-       :is-disabled="item.IsDisabled"
-       :icon="item.Icon"
-       :icon-name="item.IconName"
-       :icon-trigger="item.IconTrigger"
-       @TriggerParent="TriggerParent"
-       ></tool-item>
+        <tool-item
+          v-for="(item,index) in p_List"
+          :key="index"
+          :is-disabled="item.IsDisabled"
+          :icon="item.Icon"
+          :icon-name="item.IconName"
+          :icon-trigger="item.IconTrigger"
+          @TriggerParent="TriggerParent"
+        ></tool-item>
       </div>
     </div>
   </div>
@@ -94,12 +95,32 @@ export default {
             path: "/SignInDesk"
           });
           break;
-        case "TriggerBillList":
-        case "TriggerTransfer":
         case "TriggerScan":
           AlertModule.show({
             title: "暂未开放,敬请期待"
           });
+          break;
+        case "TriggerBillList":
+          that.$router.push({
+            path: "/TransferList"
+          });
+          break;
+        case "TriggerTransfer":
+          if (that.Global.CurrentUser.PayAddress.length == 0) {
+            AlertModule.show({
+              title: "请先完成[实名认证]和申请[助记词]"
+            });
+          } else if (that.Global.CurrentUser.PayPassWord.length == 0) {
+            AlertModule.show({
+              title: "请先设置[支付密码]"
+            });
+          } else {
+            // push to ransfer
+            that.$router.push({
+              path: "/TransferPage"
+            });
+          }
+
           break;
         case "TriggerPopularize":
           that.$router.push({

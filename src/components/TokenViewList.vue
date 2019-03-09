@@ -24,7 +24,6 @@
       ></token-item>
 
       <div class="clearfix"></div>
-      
     </div>
   </div>
 </template>
@@ -33,7 +32,7 @@
 import TokenItem from "@/components/TokenViewItem";
 export default {
   components: {
-    TokenItem,
+    TokenItem
   },
   computed: {
     reversedTotalPrice: function() {
@@ -66,7 +65,8 @@ export default {
   },
   created: function() {
     var that = this;
-    this.Global.AjaxGet("user/GetTokenSummary", function(data) {
+    this.Global.AjaxGet(`user/GetTokenSummary?p_id=${that.Global.CurrentUser.ID}`, function(data) {
+      console.log(data);
       var rList = [];
       data.Data.forEach(item => {
         rList.push({
@@ -77,6 +77,7 @@ export default {
           isup: item.IncreaseThan > 0
         });
         that.g_List = rList;
+        that.Global.CurrentTokenList = data.TokenList;
       });
     });
   }

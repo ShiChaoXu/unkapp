@@ -70,11 +70,11 @@ export default {
         that.showLoading = false;
         if (data.Data.IsExist) {
           that.Global.CurrentUser = data.Data.User;
-          that.Global.CurrentTokenList = data.Data.TokenList;
           AlertModule.show({
             title: "登录成功",
             content: `${data.Data.User.UserName} 欢迎回来`,
             onHide() {
+              window["CurrentUser"] = that.Global.CurrentUser;
               that.$router.push({
                 path: "/p1"
               });

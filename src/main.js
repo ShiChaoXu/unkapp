@@ -27,6 +27,8 @@ const WordBook = () => import('@/components/WordBook');
 const EditLoginPwd = () => import('@/components/EditLoginPwd');
 const EditPayPwd = () => import('@/components/EditPayPwd');
 const NewsDetails = () => import('@/components/NewsDetails');
+const TransferPage = () => import('@/components/TransferPage');
+const TransferList = () => import('@/components/TransferList');
 
 //End Router
 
@@ -109,6 +111,14 @@ const routes = [
   {
     path: '/NewsDetails',
     component: NewsDetails
+  },
+  {
+    path: '/TransferPage',
+    component: TransferPage
+  },
+  {
+    path: '/TransferList',
+    component: TransferList
   }
 ]
 
@@ -119,6 +129,11 @@ const router = new VueRouter({
 FastClick.attach(document.body)
 
 Vue.config.productionTip = false
+Vue.directive('focus', {
+  inserted: function (el) {
+    el.focus()
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

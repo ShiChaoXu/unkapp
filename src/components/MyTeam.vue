@@ -50,10 +50,8 @@ export default {
   methods: {},
   created: function() {
     var that = this;
-    that.Global.AjaxGet("user/GetAll", function(data) {
-      that.rList = data.Data.filter(
-        x => x.Referrer == that.Global.CurrentUser.UserPhone
-      );
+    that.Global.AjaxGet(`user/GetMyTeam?p_uesrphone=${that.Global.CurrentUser.UserPhone}`, function(data) {
+      that.rList = data.Data;
     });
   }
 };
