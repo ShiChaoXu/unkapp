@@ -3,7 +3,14 @@
     <meta name="format-detection" content="telephone=yes">
     <x-header title="转账" :left-options="{showBack: true}"></x-header>
     <group>
-      <confirm v-model="ShowPayWord" theme="IOS" show-input title="请输入支付密码" @on-confirm="CheckPayWord" v-focus></confirm>
+      <confirm
+        v-model="ShowPayWord"
+        theme="IOS"
+        show-input
+        title="请输入支付密码"
+        @on-confirm="CheckPayWord"
+        v-focus
+      ></confirm>
     </group>
     <group title="对方钱包地址">
       <x-input
@@ -102,19 +109,27 @@ export default {
           title: `请输入转账金额`
         });
       } else {
-        MVue.$vux.confirm.show({
-          title: `转账提醒,请核对转账信息`,
-          content: `
+        if (that.transferMoney * 1 > 200) {
+          MVue.$vux.alert.show({
+            title: `单笔转账不可超过200份`
+          });
+        } else {
+          MVue.$vux.confirm.show({
+            title: `转账提醒,请核对转账信息`,
+            content: `
               <p>收款人: [ ${that.targetUserName} ]</p>
               <p>收款电话: [ ${that.targetUserPhone} ]</p>
               <p>转账金额: [ ${(that.transferMoney * 1).toFixed(2)} UNK ]</p>
-              <p>本次交易会自毁 [ <span style="color:red;font-weight:bolder;">${(that.transferMoney * 0.01).toFixed(2)}</span> ] UNK.</p>
+              <p>本次交易会自毁 [ <span style="color:red;font-weight:bolder;">${(
+                that.transferMoney * 0.01
+              ).toFixed(2)}</span> ] UNK.</p>
               <p>是否继续操作?</p>
               `,
-          onConfirm: function() {
-            that.ShowPayWord = true;
-          }
-        });
+            onConfirm: function() {
+              that.ShowPayWord = true;
+            }
+          });
+        }
       }
     },
     CheckMoney: function(obj) {

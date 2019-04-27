@@ -12,7 +12,7 @@
     </div>
     <group>
       <cell is-link title="安全设置" :link="{path:'/SystemSetting'}"></cell>
-      <cell is-link title="系统公告"></cell>
+      <cell is-link title="系统公告" :link="{path:'/SystemNewsList'}"></cell>
       <a href="tel:13681525763">
         <div class="weui-cell vux-tap-active weui-cell_access">
           <div class="weui-cell__hd"></div>

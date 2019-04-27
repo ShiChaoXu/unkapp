@@ -1,9 +1,9 @@
 <script>
-const ISPROD = false;
+const ISPROD = true;
 const webApi = ISPROD
-  ? "http://unk-token.com:8091/api/"
-  : "http://192.168.1.7:8091/api/";
-const Webwww = ISPROD ? "http://unk-token.com/" : "http://192.168.1.7:8090/";
+  ? "http://unk-token.com:9051/api/"
+  : "http://localhost:8091/api/";
+const Webwww = ISPROD ? "http://unk-token.com/" : "http://localhost:8090/";
 const CurrentUser = null;
 const CurrentTokenList = [];
 

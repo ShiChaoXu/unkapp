@@ -30,6 +30,9 @@ const NewsDetails = () => import('@/components/NewsDetails');
 const TransferPage = () => import('@/components/TransferPage');
 const TransferList = () => import('@/components/TransferList');
 
+const SystemNewsList=()=>import('@/components/SystemNewsList');
+const SystemNewsInfo=()=>import('@/components/SystemNewsInfo');
+
 //End Router
 
 
@@ -119,6 +122,14 @@ const routes = [
   {
     path: '/TransferList',
     component: TransferList
+  },
+  {
+    path:'/SystemNewsList',
+    component:SystemNewsList
+  },
+  {
+    path:'/SystemNewsInfo',
+    component:SystemNewsInfo
   }
 ]
 

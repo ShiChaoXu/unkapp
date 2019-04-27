@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="vux-demox">
-      <H2 style="font-weight:bolder;">OBOROTC</H2>
-      <h4>UNK—TOKEN</h4>
+      <H2 style="font-weight:bolder;">U-TOKEN</H2>
+      <h4>您的资产专家</h4>
     </div>
     <group title>
       <x-input title="手机号" v-model="UserName" :max="11" is-type="china-mobile" required></x-input>

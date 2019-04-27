@@ -114,6 +114,13 @@ export default {
             AlertModule.show({
               title: "请先设置[支付密码]"
             });
+          } else if (
+            that.Global.CurrentUser.IDCard.length == 0 ||
+            that.Global.CurrentUser.IDCard.length != 18
+          ) {
+            AlertModule.show({
+              title: "请先完成[实名认证]"
+            });
           } else {
             // push to ransfer
             that.$router.push({

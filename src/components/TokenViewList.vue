@@ -60,7 +60,7 @@ export default {
       var items = this.Global.CurrentTokenList.filter(
         x => x.TokenType == p_type
       );
-      return items.length > 0 ? items[0].CurrentIcon : 0;
+      return items.length > 0 ? items[0].CurrentIcon.toFixed(2) : 0;
     }
   },
   created: function() {

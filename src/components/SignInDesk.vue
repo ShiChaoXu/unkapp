@@ -11,7 +11,7 @@
             </thead>
             <tbody style="">
                 <tr>
-                <td style="">VBX</td>
+                <td style="">UTC</td>
                 <td>{{TotalCount.toFixed(2)}}</td>
                 <td>{{Price.toFixed(2)}}</td>
                 <td style="font-weight:bolder;color:green;">{{TotalCount.toFixed(2)}}</td>
@@ -74,7 +74,7 @@ export default {
           that.TotalCount += 1;
           that.HasSignIn = true;
           AlertModule.show({
-            title: `签到成功,当前VBX总量: ${that.TotalCount}`
+            title: `签到成功,当前UTC总量: ${that.TotalCount}`
           });
         }
       });
