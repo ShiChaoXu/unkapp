@@ -39,7 +39,12 @@ export default {
   },
   watch: {
     $route(to, from) {
-      var hideList = ["/RegAccout","/TransferList","/MyTeam"];
+      var hideList = [
+        "/RegAccout",
+        "/TransferList",
+        "/MyTeam",
+        "/TokenTransForm"
+      ];
       if (hideList.indexOf(to.path) != -1) {
         this.isShow = false;
       } else {

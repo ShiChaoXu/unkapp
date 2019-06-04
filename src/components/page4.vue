@@ -13,20 +13,6 @@
     <group>
       <cell is-link title="安全设置" :link="{path:'/SystemSetting'}"></cell>
       <cell is-link title="系统公告" :link="{path:'/SystemNewsList'}"></cell>
-      <a href="tel:13681525763">
-        <div class="weui-cell vux-tap-active weui-cell_access">
-          <div class="weui-cell__hd"></div>
-          <div class="vux-cell-bd vux-cell-primary">
-            <p>
-              <label class="vux-label">联系我们</label>
-            </p>
-            <span class="vux-label-desc"></span>
-          </div>
-          <div class="weui-cell__ft">
-            <!---->
-          </div>
-        </div>
-      </a>
     </group>
     <group>
       <x-button

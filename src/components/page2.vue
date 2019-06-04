@@ -55,7 +55,7 @@ export default {
         },
         {
           Icon: "icon-saoyisao",
-          IconName: "扫一扫",
+          IconName: "通证转换",
           IconTrigger: "TriggerScan",
           IsDisabled: false
         },
@@ -96,8 +96,8 @@ export default {
           });
           break;
         case "TriggerScan":
-          AlertModule.show({
-            title: "暂未开放,敬请期待"
+          that.$router.push({
+            path: "/TokenTransForm"
           });
           break;
         case "TriggerBillList":
